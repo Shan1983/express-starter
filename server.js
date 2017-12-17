@@ -19,16 +19,16 @@ require('./helpers/passportHelper');
 const app = express();
 
 // browser sync setup //
-if (app.get('env') == 'development') {
-  var browserSync = require('browser-sync');
-  var config = {
+if (process.env.NODE_ENV === 'development') {
+  const browserSync = require('browser-sync');
+  const config = {
     files: ['public/**/*.{js,css}', 'sass/**/*.scss', 'views/**/*.handlebars'],
     logLevel: 'debug',
     logSnippet: false,
     reloadDelay: 1500,
     reloadOnRestart: true,
   };
-  var bs = browserSync(config);
+  const bs = browserSync(config);
   app.use(require('connect-browser-sync')(bs));
 }
 // end of browser sync setup //
