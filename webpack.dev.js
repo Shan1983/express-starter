@@ -4,8 +4,6 @@
 
 const path = require('path');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
   entry: './config/index.js',
@@ -73,21 +71,8 @@ module.exports = {
           },
         ],
       }, // end of url loader
-      //   {
-      //     test: /\.(handlebars|hbs)$/,
-      //     use: [
-      //       {
-      //         loader: 'handlebars-loader',
-      //         query: {
-      //           partialDir: [path.join(__dirname, 'layouts', 'partials')],
-      //         },
-      //       },
-      //     ],
-      //   },
     ], // end of rules
   },
-  //   plugins: [
-  //     // here is where we tell it to output our css to a separate file
-  //     new ExtractTextPlugin('style.css'),
-  //   ],
+  // plugins: [
+  // ],
 };

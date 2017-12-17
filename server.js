@@ -18,6 +18,21 @@ require('./helpers/passportHelper');
 // create our Express app
 const app = express();
 
+// browser sync setup //
+if (app.get('env') == 'development') {
+  var browserSync = require('browser-sync');
+  var config = {
+    files: ['public/**/*.{js,css}', 'sass/**/*.scss', 'views/**/*.handlebars'],
+    logLevel: 'debug',
+    logSnippet: false,
+    reloadDelay: 1500,
+    reloadOnRestart: true,
+  };
+  var bs = browserSync(config);
+  app.use(require('connect-browser-sync')(bs));
+}
+// end of browser sync setup //
+
 // view engine setup
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
