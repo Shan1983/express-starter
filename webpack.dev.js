@@ -4,13 +4,13 @@
 
 const path = require('path');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
   entry: './config/index.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public', 'dist'),
     filename: '[name].bundle.js',
   },
   // load in our loaders and stuffs
@@ -73,21 +73,21 @@ module.exports = {
           },
         ],
       }, // end of url loader
-      {
-        test: /\.(handlebars|hbs)$/,
-        use: [
-          {
-            loader: 'handlebars-loader',
-          },
-        ],
-      },
+      //   {
+      //     test: /\.(handlebars|hbs)$/,
+      //     use: [
+      //       {
+      //         loader: 'handlebars-loader',
+      //         query: {
+      //           partialDir: [path.join(__dirname, 'layouts', 'partials')],
+      //         },
+      //       },
+      //     ],
+      //   },
     ], // end of rules
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './views/layouts/main.hbs',
-      filetype: 'hbs',
-      inject: true,
-    }),
-  ],
+  //   plugins: [
+  //     // here is where we tell it to output our css to a separate file
+  //     new ExtractTextPlugin('style.css'),
+  //   ],
 };
